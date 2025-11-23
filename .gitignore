@@ -1,0 +1,73 @@
+# ========== Unity Generated ==========
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+MemoryCaptures/
+UserSettings/
+UserSettings/
+Assets/AssetStoreTools*
+
+# Crash reports and build results
+*.apk
+*.aab
+*.xcodeproj
+*.xcworkspace
+*.xcuserdata/
+*.xcuserstate
+
+# ========== OS generated ==========
+.DS_Store
+Thumbs.db
+
+# ========== Visual Studio / JetBrains ==========
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+.vs/
+
+# ========== Node/Package managers ==========
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnp.*
+
+# ========== Package Manager ==========
+/Packages/packages-lock.json
+Packages/*-lock.json
+
+# ========== Unity Cache Server ==========
+/Library/Cache/
+Cache/
+
+# ========== Asset Store ==========
+Assets/AssetStoreTools*
+
+# ========== Packed Assets (ignored as binary blobs) ==========
+*.unitypackage
+
+# ========== Temporary files ==========
+*.tmp
+*.temp
+*.bak
+
+# ========== OS Editor files ==========
+*.swp
+*.swo
+
+# ========== JetBrains Rider ==========
+.idea/
+
+# ========== Misc ==========
+*.log
