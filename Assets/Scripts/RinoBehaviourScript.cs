@@ -41,11 +41,11 @@ public class RinoBehaviourScript : MonoBehaviour
         // Movimiento en la dirección actual
         if (movingRight)
         {
-            rigidbody2D.velocity = new Vector2(2, 0);  // Mover hacia la derecha
+            rigidbody2D.linearVelocity = new Vector2(2, 0);  // Mover hacia la derecha
         }
         else
         {
-            rigidbody2D.velocity = new Vector2(-2, 0);  // Mover hacia la izquierda
+            rigidbody2D.linearVelocity = new Vector2(-2, 0);  // Mover hacia la izquierda
         }
     }
 

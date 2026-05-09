@@ -144,14 +144,14 @@ public class PlayerBehaviourScript : MonoBehaviour
             // Movimiento a la derecha
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                rigidbody2D.velocity = new Vector2(currentSpeed, rigidbody2D.velocity.y);
+                rigidbody2D.linearVelocity = new Vector2(currentSpeed, rigidbody2D.linearVelocity.y);
                 spriteRenderer.flipX = false;
             }
 
             // Movimiento a la izquierda
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                rigidbody2D.velocity = new Vector2(-currentSpeed, rigidbody2D.velocity.y);
+                rigidbody2D.linearVelocity = new Vector2(-currentSpeed, rigidbody2D.linearVelocity.y);
                 spriteRenderer.flipX = true;
             }
 
@@ -161,7 +161,7 @@ public class PlayerBehaviourScript : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.S) && inWater)
             {
                 sfxAudioSource.PlayOneShot(nadarSound);
-                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 4);
+                rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x, 4);
                 animator.SetInteger("estado", 3);                
             }
 
@@ -172,7 +172,7 @@ public class PlayerBehaviourScript : MonoBehaviour
                 if (grounded)
                 {
                     PlayJumpSound();
-                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 10);  // Salto normal
+                    rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x, 10);  // Salto normal
                     jumpCount = 1;  // Primer salto realizado
 
                     Debug.Log("Primer salto. Contador de saltos: " + jumpCount);
@@ -181,7 +181,7 @@ public class PlayerBehaviourScript : MonoBehaviour
                 else
                 {
                     PlayDoubleJumpSound();
-                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 12);  // Segundo salto
+                    rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x, 12);  // Segundo salto
                     animator.SetInteger("estado", 5);  // Activa la animación del doble salto
                     jumpCount++;  // Segundo salto realizado
                     Debug.Log("Doble salto. Contador de saltos: " + jumpCount);
@@ -212,11 +212,11 @@ public class PlayerBehaviourScript : MonoBehaviour
                 animator.SetInteger("estado", 2);  // Corriendo
             }
         }
-        else if (rigidbody2D.velocity.y > 0 && jumpCount == 0)
+        else if (rigidbody2D.linearVelocity.y > 0 && jumpCount == 0)
         {
             animator.SetInteger("estado", 3);
         }
-        else if (rigidbody2D.velocity.y < 0)
+        else if (rigidbody2D.linearVelocity.y < 0)
         {
             animator.SetInteger("estado", 4);  // Cayendo
         }
@@ -272,7 +272,7 @@ public class PlayerBehaviourScript : MonoBehaviour
             if (!isGrounded())
             {
                 PlayEnemyKillSound();
-                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 15);
+                rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x, 15);
                 collision.gameObject.GetComponent<Animator>().SetTrigger("Destroy");
                 //collision.gameObject.GetComponent<RinoBehaviourScript>().RinoDestroy();
             }
@@ -286,10 +286,10 @@ public class PlayerBehaviourScript : MonoBehaviour
         if (collision.gameObject.tag == "Bat")
         {
             // Verifica si el jugador está cayendo y su posición en Y es mayor que la del murciélago
-            if (rigidbody2D.velocity.y < 0 && transform.position.y > collision.gameObject.transform.position.y)
+            if (rigidbody2D.linearVelocity.y < 0 && transform.position.y > collision.gameObject.transform.position.y)
             {
                 PlayEnemyKillSound();
-                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 15); // Rebota tras pisar al murciélago
+                rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x, 15); // Rebota tras pisar al murciélago
                 collision.gameObject.GetComponent<Animator>().SetTrigger("Destroybat");  // Ejecuta la animación de destrucción
             }
             else
@@ -314,22 +314,22 @@ public class PlayerBehaviourScript : MonoBehaviour
             {
                 if (spriteRenderer.flipX)
                 {
-                    rigidbody2D.velocity = new Vector2(5, 2);
+                    rigidbody2D.linearVelocity = new Vector2(5, 2);
                 }
                 else
                 {
-                    rigidbody2D.velocity = new Vector2(-5, 2);
+                    rigidbody2D.linearVelocity = new Vector2(-5, 2);
                 }
             }
             else 
             {
                 if (spriteRenderer.flipX)
                 {
-                    rigidbody2D.velocity = new Vector2(10, 5);
+                    rigidbody2D.linearVelocity = new Vector2(10, 5);
                 }
                 else
                 {
-                    rigidbody2D.velocity = new Vector2(-10, 5);
+                    rigidbody2D.linearVelocity = new Vector2(-10, 5);
                 }
             }
 
@@ -425,7 +425,7 @@ public class PlayerBehaviourScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Fan") 
         {
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 20);
+            rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x, 20);
 
             if (!hasPlayedvientoSound)
             {
@@ -436,7 +436,7 @@ public class PlayerBehaviourScript : MonoBehaviour
 
         if (collision.gameObject.tag == "fanInv")
         {
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x,-10);
+            rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x,-10);
 
             if (!hasPlayedvientoSound)
             {
@@ -485,7 +485,7 @@ public class PlayerBehaviourScript : MonoBehaviour
         {
             sfxAudioSource.PlayOneShot(TrampolinSound);
             GameObject.FindGameObjectWithTag("Tramp").GetComponent<Animator>().SetBool("EstadoTramp", true);
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 20);
+            rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x, 20);
         }
 
         if (collision.gameObject.tag == "agua")
@@ -585,7 +585,7 @@ public class PlayerBehaviourScript : MonoBehaviour
     {
         // Reproduce el sonido de muerte
         PlayDeathSound();
-        rigidbody2D.velocity = Vector2.zero;
+        rigidbody2D.linearVelocity = Vector2.zero;
 
         // Desactiva el control del jugador
         controller = false;
